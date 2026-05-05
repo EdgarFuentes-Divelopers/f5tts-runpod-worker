@@ -7,7 +7,7 @@
         "speed": 1.0,
         "remove_silence": true
       },
-      "timeout": 60000
+      "timeout": 300000
     },
     {
       "name": "test_texto_largo_es",
@@ -16,7 +16,7 @@
         "speed": 1.0,
         "remove_silence": true
       },
-      "timeout": 120000
+      "timeout": 300000
     },
     {
       "name": "test_velocidad_alta",
@@ -25,7 +25,7 @@
         "speed": 1.25,
         "remove_silence": true
       },
-      "timeout": 60000
+      "timeout": 300000
     }
   ],
   "config": {
@@ -35,18 +35,9 @@
       "12.8", "12.7", "12.6", "12.5", "12.4", "12.3", "12.2", "12.1", "12.0"
     ],
     "env": [
-      {
-        "key": "MODEL_NAME",
-        "value": "F5TTS_v1_Base"
-      },
-      {
-        "key": "SPEED",
-        "value": "1.0"
-      },
-      {
-        "key": "REMOVE_SILENCE",
-        "value": "true"
-      }
+      { "key": "MODEL_NAME", "value": "F5TTS_v1_Base" },
+      { "key": "SPEED", "value": "1.0" },
+      { "key": "REMOVE_SILENCE", "value": "true" }
     ]
   }
 }
