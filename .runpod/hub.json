@@ -1,0 +1,77 @@
+{
+  "title": "F5-TTS Podcast Worker",
+  "description": "Generates high-quality speech audio from text using F5-TTS. Accepts a text script and returns a base64-encoded WAV file. Designed for podcast and narration use cases in Spanish and English.",
+  "type": "serverless",
+  "category": "audio",
+
+  "config": {
+    "runsOn": "GPU",
+    "containerDiskInGb": 25,
+
+    "gpuCount": 1,
+    "gpuIds": "ADA_24,AMP_16,ADA_16",
+    "allowedCudaVersions": [
+      "12.8", "12.7", "12.6", "12.5", "12.4", "12.3", "12.2", "12.1", "12.0"
+    ],
+
+    "presets": [
+      {
+        "name": "Español (default)",
+        "defaults": {
+          "MODEL_NAME": "F5TTS_v1_Base",
+          "SPEED": "1.0",
+          "REMOVE_SILENCE": "true"
+        }
+      },
+      {
+        "name": "Alta velocidad",
+        "defaults": {
+          "MODEL_NAME": "F5TTS_v1_Base",
+          "SPEED": "1.25",
+          "REMOVE_SILENCE": "true"
+        }
+      }
+    ],
+
+    "env": [
+      {
+        "key": "MODEL_NAME",
+        "input": {
+          "name": "Modelo F5-TTS",
+          "type": "string",
+          "description": "Modelo de síntesis de voz a usar",
+          "options": [
+            { "label": "F5-TTS v1 Base (recomendado)", "value": "F5TTS_v1_Base" },
+            { "label": "E2-TTS v1 Base", "value": "E2TTS_v1_Base" }
+          ],
+          "default": "F5TTS_v1_Base",
+          "advanced": false
+        }
+      },
+      {
+        "key": "SPEED",
+        "input": {
+          "name": "Velocidad de habla",
+          "type": "number",
+          "description": "Factor de velocidad de la voz generada (1.0 = normal)",
+          "min": 0.5,
+          "max": 2.0,
+          "default": 1.0,
+          "advanced": false
+        }
+      },
+      {
+        "key": "REMOVE_SILENCE",
+        "input": {
+          "type": "boolean",
+          "name": "Eliminar silencios",
+          "description": "Recorta silencios largos del audio generado",
+          "default": true,
+          "trueValue": "true",
+          "falseValue": "false",
+          "advanced": true
+        }
+      }
+    ]
+  }
+}

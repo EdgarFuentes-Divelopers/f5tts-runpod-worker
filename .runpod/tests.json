@@ -1,0 +1,52 @@
+{
+  "tests": [
+    {
+      "name": "test_texto_corto_es",
+      "input": {
+        "text": "Bienvenidos al resumen de noticias del día. Hoy les traemos las principales novedades del sector tecnológico.",
+        "speed": 1.0,
+        "remove_silence": true
+      },
+      "timeout": 60000
+    },
+    {
+      "name": "test_texto_largo_es",
+      "input": {
+        "text": "Buenos días. Hoy es un día importante para la tecnología. Las principales empresas del sector han anunciado nuevos avances en inteligencia artificial. Además, los mercados financieros reaccionaron positivamente ante estas noticias. Por otro lado, el sector salud reportó avances significativos en nuevos tratamientos. Esto concluye nuestro resumen. Hasta la próxima.",
+        "speed": 1.0,
+        "remove_silence": true
+      },
+      "timeout": 120000
+    },
+    {
+      "name": "test_velocidad_alta",
+      "input": {
+        "text": "Resumen express: nuevos avances en IA, mercados al alza y clima estable para el fin de semana.",
+        "speed": 1.25,
+        "remove_silence": true
+      },
+      "timeout": 60000
+    }
+  ],
+  "config": {
+    "gpuTypeId": "NVIDIA GeForce RTX 4090",
+    "gpuCount": 1,
+    "allowedCudaVersions": [
+      "12.8", "12.7", "12.6", "12.5", "12.4", "12.3", "12.2", "12.1", "12.0"
+    ],
+    "env": [
+      {
+        "key": "MODEL_NAME",
+        "value": "F5TTS_v1_Base"
+      },
+      {
+        "key": "SPEED",
+        "value": "1.0"
+      },
+      {
+        "key": "REMOVE_SILENCE",
+        "value": "true"
+      }
+    ]
+  }
+}
